@@ -1,12 +1,8 @@
 package Practicum;
-
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 /**
  * Created by Thomas on 1-12-2014.
  */
-public class Bestellingen{
+public class Bestellingen extends ArrayQueue<Bestellingen>{
 
     protected int klantID;
     protected int bestellingID;
@@ -16,75 +12,71 @@ public class Bestellingen{
     protected boolean compleet;
     protected boolean dadelijk;
 
+    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int duur, boolean compleet, boolean dadelijk){
+        this.klantID = klantID;
+        this.bestellingID = bestellingID;
+        this.verwerking = verwerking;
+        this.duur = duur;
+        this.compleet = compleet;
+        this.dadelijk = dadelijk;
+
+    }
+
+    // Getters and setters
     public int getKlantID() {
         return klantID;
     }
 
-    public void setKlantID(int klantID) {
-        this.klantID = klantID;
-    }
 
     public int getBestellingID() {
         return bestellingID;
     }
 
-    public void setBestellingID(int bestellingID) {
-        this.bestellingID = bestellingID;
-    }
 
     public boolean isVerwerking() {
         return verwerking;
     }
 
-    public void setVerwerking(boolean verwerking) {
-        this.verwerking = verwerking;
-    }
 
     public int getStartTijd() {
         return startTijd;
     }
 
-    public void setStartTijd(int startTijd) {
-        this.startTijd = startTijd;
-    }
 
     public int getDuur() {
         return duur;
     }
 
-    public void setDuur(int duur) {
-        this.duur = duur;
-    }
 
     public boolean isCompleet() {
         return compleet;
     }
 
-    public void setCompleet(boolean compleet) {
-        this.compleet = compleet;
-    }
 
     public boolean isDadelijk() {
         return dadelijk;
     }
 
-    public void setDadelijk(boolean dadelijk) {
-        this.dadelijk = dadelijk;
-    }
 
     public static void main(String[] args) {
+        int doorloopTijd = 10;
+       //Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
 
-        Queue<String> queue = new ArrayDeque<String>();
+       //bestellingen.add(bestellingen);
+
+        for (int i = 0, klantID = 0, bestellingID = 0; klantID < doorloopTijd; i++, klantID++, bestellingID++) {
+
+            Bestellingen bestellingen = new Bestellingen(klantID,bestellingID,false,5,false,true);
+
+            System.out.println(bestellingen);
+        }
+
+
+
+
 
     }
 
-    public Bestellingen(){
-
-        Bestellingen bestellingen = new Bestellingen();
-
-
-
-    }
 
 
 

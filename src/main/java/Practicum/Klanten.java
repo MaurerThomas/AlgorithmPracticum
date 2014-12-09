@@ -9,42 +9,10 @@ import java.util.Scanner;
 /**
  * Created by Thomas on 28-11-2014.
  */
-public class Klanten extends Bestellingen {
+public class Klanten extends ArrayQueue<Klanten> {
 
     public static void main(String[] args) {
 
-
-        String[] Achternamen = new String[3] ;
-        int[] leeftijd = {12,54,23,65,32,76,78,4};
-        Scanner scn = new Scanner(System.in);
-
-        System.out.println("Nieuwe klanten toevoegen? y/n");
-        String nieuweKlanten = scn.nextLine();
-        if (nieuweKlanten.equals("y")) {
-
-            for (int i = 0; i < Achternamen.length; i++){
-                System.out.println("Voer achternaam in");
-                Achternamen[i] = scn.nextLine();
-
-        }
-
-        }
-
-        System.out.println("Wilt u zoeken via de linear search methode? y/n");
-        String linearZoeker = scn.nextLine();
-
-        if (linearZoeker.equals("y")) {
-
-            System.out.println("Zoek op achternaam");
-            String zoekTerm;
-            zoekTerm = scn.next();
-            System.out.println("search(achternamen): " + linearSearch(Achternamen, zoekTerm));
-        } else {
-            sort(leeftijd);
-            //System.out.println("Dan niet...");
-        }
-
-        System.out.println("Wilt u leeftijden sorteren via merge sort? y/n");
 
 
 
@@ -62,34 +30,36 @@ public class Klanten extends Bestellingen {
         return -1;
     }
 
-    public static void sort(int[] a){
-        sort(a, 0 ,a.length);
-        System.out.println(Arrays.toString(a));
+
+    public static void sort(int[] invoerArray){
+        sort(invoerArray, 0 ,invoerArray.length);
+        System.out.println(Arrays.toString(invoerArray));
     }
 
-    private static void sort(int [] a, int p, int q){
-        if (q - p < 2){
+    private static void sort(int [] invoerArray, int low, int high){
+        if (high - low < 2){
             return;
         }
-        int m = (p + q)/2;
-        sort(a, p, m);
-        sort(a ,m ,q);
-        merge(a, p, m, q);
+        int middle = (low + high)/2;
+        sort(invoerArray, low, middle);
+        sort(invoerArray ,middle ,high);
+        merge(invoerArray, low, middle, high);
 
 
     }
 
-    private static void merge(int [] a,int p, int m, int q){
-        if (a[m-1] <= a[m]){
+    private static void merge(int [] invoerArray,int low, int middle, int high){
+        if (invoerArray[middle-1] <= invoerArray[middle]){
             return;
         }
-        int i = p, j = m , k = 0;
-        int [] tmp = new int [q-p];
-        while (i < m && j < q){
-            tmp[k++] = (a[i] <= a[j] ? a[i++] : a[j++] );
+        int tijdelijkLow = low, tijdelijkMiddel = middle , beginPunt = 0;
+        int [] tijdelijkeArray = new int [high-low];
+        System.out.println(Arrays.toString(tijdelijkeArray));
+        while (tijdelijkLow < middle && tijdelijkMiddel < high){
+            tijdelijkeArray[beginPunt++] = (invoerArray[tijdelijkLow] <= invoerArray[tijdelijkMiddel] ? invoerArray[tijdelijkLow++] : invoerArray[tijdelijkMiddel++] );
         }
-        System.arraycopy(a, i, a, p+k, m-i);
-        System.arraycopy(tmp, 0, a, p, k);
+        System.arraycopy(invoerArray, tijdelijkLow, invoerArray, low+beginPunt, middle-tijdelijkLow);
+        System.arraycopy(tijdelijkeArray, 0, invoerArray, low, beginPunt);
 
     }
 
