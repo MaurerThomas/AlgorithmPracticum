@@ -75,6 +75,22 @@ public class ArrayQueue<E> implements Queue<E> {
         }
     }
 
+    public String toString(){
+        String out = "[";
+        boolean first = true;
+        for(int n=0; n < size();n++) {
+            E e = elements[n];
+            if(!first) {
+                out += ", ";
+            }
+            out += e.toString();
+            first = false;
+        }
+        return out+"]";
+
+    }
+
+
     private void resize(){
         int size = size();
         int len = elements.length;

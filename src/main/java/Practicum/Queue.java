@@ -9,4 +9,5 @@ public interface Queue<E> {
     public boolean isEmpty();
     public E remove();
     public int size();
+
 }

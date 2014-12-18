@@ -3,6 +3,7 @@ package Practicum;
  * Created by Thomas on 1-12-2014.
  */
 public class Bestellingen extends ArrayQueue<Bestellingen>{
+    private static ArrayQueue<Bestellingen> queue = new ArrayQueue<Bestellingen>(10);
 
     protected int klantID;
     protected int bestellingID;
@@ -60,15 +61,17 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
     public static void main(String[] args) {
         int doorloopTijd = 10;
-       //Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
+       Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
 
-       //bestellingen.add(bestellingen);
+       queue.add(bestellingen);
+        System.out.println(queue);
+
 
         for (int i = 0, klantID = 0, bestellingID = 0; klantID < doorloopTijd; i++, klantID++, bestellingID++) {
 
-            Bestellingen bestellingen = new Bestellingen(klantID,bestellingID,false,5,false,true);
+           // Bestellingen bestellingen = new Bestellingen(klantID,bestellingID,false,5,false,true);
 
-            System.out.println(bestellingen);
+           // System.out.println(bestellingen);
         }
 
 
