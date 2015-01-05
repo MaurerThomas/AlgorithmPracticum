@@ -82,6 +82,7 @@ public class ArrayQueue<E> implements Queue<E> {
             E e = elements[n];
             if(!first) {
                 out += ", ";
+
             }
             out += e.toString();
             first = false;
@@ -102,6 +103,7 @@ public class ArrayQueue<E> implements Queue<E> {
         front = 0;
         back = size;
     }
+
 
 
 }

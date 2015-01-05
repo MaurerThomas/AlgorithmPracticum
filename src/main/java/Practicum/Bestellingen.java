@@ -13,6 +13,8 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
     protected boolean compleet;
     protected boolean dadelijk;
 
+
+
     public Bestellingen(int klantID, int bestellingID, boolean verwerking, int duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
         this.bestellingID = bestellingID;
@@ -23,64 +25,50 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
     }
 
-    // Getters and setters
-    public int getKlantID() {
-        return klantID;
+    public String toString() {
+        return "KlantID:" + this.klantID + ","
+                + "BestellingID:" + this.bestellingID + "," + "Verwerking:"
+                + this.verwerking + "," + "Tijd:" + this.duur + "," + "Compleet:" + this.compleet + "," + "Wacht op bestelling:" + this.dadelijk;
     }
 
+    // Getters and setters
+    public int getKlantID() {return klantID;}
 
     public int getBestellingID() {
         return bestellingID;
     }
 
-
     public boolean isVerwerking() {
         return verwerking;
     }
-
 
     public int getStartTijd() {
         return startTijd;
     }
 
-
     public int getDuur() {
         return duur;
     }
-
 
     public boolean isCompleet() {
         return compleet;
     }
 
-
     public boolean isDadelijk() {
         return dadelijk;
     }
 
-
     public static void main(String[] args) {
-        int doorloopTijd = 10;
-       Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
 
-       queue.add(bestellingen);
+
+       Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
+       Bestellingen bestellingen2 = new Bestellingen(2,2,true,7,true,false);
+
+        queue.add(bestellingen);
+        queue.add(bestellingen2);
+        System.out.println("Element to remove: " + queue.element());
+        System.out.println("remove: " + queue.remove());
         System.out.println(queue);
 
-
-        for (int i = 0, klantID = 0, bestellingID = 0; klantID < doorloopTijd; i++, klantID++, bestellingID++) {
-
-           // Bestellingen bestellingen = new Bestellingen(klantID,bestellingID,false,5,false,true);
-
-           // System.out.println(bestellingen);
-        }
-
-
-
-
-
     }
-
-
-
-
 }
