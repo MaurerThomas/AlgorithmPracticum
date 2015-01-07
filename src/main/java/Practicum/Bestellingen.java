@@ -14,7 +14,6 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
     protected boolean dadelijk;
 
 
-
     public Bestellingen(int klantID, int bestellingID, boolean verwerking, int duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
         this.bestellingID = bestellingID;
@@ -58,6 +57,34 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
         return dadelijk;
     }
 
+    public void setKlantID(int klantID) {
+        this.klantID = klantID;
+    }
+
+    public void setBestellingID(int bestellingID) {
+        this.bestellingID = bestellingID;
+    }
+
+    public void setVerwerking(boolean verwerking) {
+        this.verwerking = verwerking;
+    }
+
+    public void setStartTijd(int startTijd) {
+        this.startTijd = startTijd;
+    }
+
+    public void setDuur(int duur) {
+        this.duur = duur;
+    }
+
+    public void setCompleet(boolean compleet) {
+        this.compleet = compleet;
+    }
+
+    public void setDadelijk(boolean dadelijk) {
+        this.dadelijk = dadelijk;
+    }
+
     public static void main(String[] args) {
 
 
@@ -66,6 +93,7 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
         queue.add(bestellingen);
         queue.add(bestellingen2);
+        System.out.println(queue);
         System.out.println("Element to remove: " + queue.element());
         System.out.println("remove: " + queue.remove());
         System.out.println(queue);

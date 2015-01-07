@@ -62,7 +62,6 @@ public class ArrayQueue<E> implements Queue<E> {
         if (front == elements.length){
             front = 0;
         }
-
         return element;
     }
 
@@ -79,18 +78,21 @@ public class ArrayQueue<E> implements Queue<E> {
         String out = "[";
         boolean first = true;
         for(int n=0; n < size();n++) {
+
             E e = elements[n];
+
+            System.out.println("Arrayqueue " + e);
             if(!first) {
                 out += ", ";
-
             }
+
             out += e.toString();
-            first = false;
+                first = false;
+
         }
         return out+"]";
 
     }
-
 
     private void resize(){
         int size = size();
@@ -103,7 +105,5 @@ public class ArrayQueue<E> implements Queue<E> {
         front = 0;
         back = size;
     }
-
-
 
 }

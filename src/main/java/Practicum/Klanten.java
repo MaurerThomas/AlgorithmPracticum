@@ -1,10 +1,7 @@
 package Practicum;
 
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Queue;
-import java.util.Scanner;
 
 /**
  * Created by Thomas on 28-11-2014.
@@ -12,8 +9,6 @@ import java.util.Scanner;
 public class Klanten extends ArrayQueue<Klanten> {
 
     public static void main(String[] args) {
-
-
 
 
     }
