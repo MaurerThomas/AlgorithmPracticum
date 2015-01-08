@@ -74,17 +74,21 @@ public class ArrayQueue<E> implements Queue<E> {
             return back - front + elements.length;
         }
     }
-
+    @Override
     public String toString(){
         String out = "[";
         boolean first = true;
+        System.out.println(size());
         for(int n=0; n < size();n++) {
             E e = elements[n];
+            System.out.println("ArrayQueue " + elements[n]);
+
             if(!first) {
                 out += ", ";
-
             }
-            out += e.toString();
+            if (e != null){
+                out += e.toString();
+            }
             first = false;
         }
         return out+"]";

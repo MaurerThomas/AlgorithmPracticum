@@ -1,10 +1,7 @@
 package Practicum;
 
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Queue;
-import java.util.Scanner;
 
 /**
  * Created by Thomas on 28-11-2014.
@@ -12,11 +9,50 @@ import java.util.Scanner;
 public class Klanten extends ArrayQueue<Klanten> {
 
     public static void main(String[] args) {
+        int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
+        sort(notSortedAge);
 
+        String[] notSortedArray = {"maurer", "levens", "maurits", "verker"};
+        // Search for lastname
+        System.out.println("Index: " + linearSearch(notSortedArray, "maurits"));
 
-
+        String sortedArray[] = insertionSort(notSortedArray, notSortedArray.length);
+        for (String aSortedArray : sortedArray) {
+            System.out.println(aSortedArray);
+        }
 
     }
+
+    /*
+
+        Insertion Sort
+
+    */
+
+    public static String[] insertionSort(String array[], int arrayLength){
+        String tempArray;
+        for(int firstIndex = 0 ; firstIndex < arrayLength ; firstIndex++){
+            for(int nextIndex = firstIndex + 1 ; nextIndex < arrayLength ; nextIndex++){
+
+                // compareToIgnoreCase returns a negative integer, zero, or a positive integer as the specified String is greater than, equal to, or less than this String.
+                if ( array[firstIndex].compareToIgnoreCase( array[nextIndex] ) >= 0){
+                    tempArray = array[firstIndex];
+
+                    array[firstIndex] = array[nextIndex];
+
+                    array[nextIndex] = tempArray;
+
+                }
+            }
+        }
+        return array;
+    }
+
+    /*
+
+        linearSearch
+
+    */
 
     public static int linearSearch(String[] Achternamen, String achternaamInvoer ){
 
@@ -30,7 +66,11 @@ public class Klanten extends ArrayQueue<Klanten> {
         return -1;
     }
 
+    /*
 
+        Merge Sort
+
+    */
     public static void sort(int[] invoerArray){
         sort(invoerArray, 0 ,invoerArray.length);
         System.out.println(Arrays.toString(invoerArray));
@@ -54,7 +94,7 @@ public class Klanten extends ArrayQueue<Klanten> {
         }
         int tijdelijkLow = low, tijdelijkMiddel = middle , beginPunt = 0;
         int [] tijdelijkeArray = new int [high-low];
-        System.out.println(Arrays.toString(tijdelijkeArray));
+
         while (tijdelijkLow < middle && tijdelijkMiddel < high){
             tijdelijkeArray[beginPunt++] = (invoerArray[tijdelijkLow] <= invoerArray[tijdelijkMiddel] ? invoerArray[tijdelijkLow++] : invoerArray[tijdelijkMiddel++] );
         }

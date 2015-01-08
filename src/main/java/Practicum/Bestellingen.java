@@ -15,10 +15,11 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
 
 
-    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int duur, boolean compleet, boolean dadelijk){
+    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
         this.bestellingID = bestellingID;
         this.verwerking = verwerking;
+        this.startTijd = startTijd;
         this.duur = duur;
         this.compleet = compleet;
         this.dadelijk = dadelijk;
@@ -33,6 +34,34 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
     // Getters and setters
     public int getKlantID() {return klantID;}
+
+    public void setKlantID(int klantID) {
+        this.klantID = klantID;
+    }
+
+    public void setBestellingID(int bestellingID) {
+        this.bestellingID = bestellingID;
+    }
+
+    public void setVerwerking(boolean verwerking) {
+        this.verwerking = verwerking;
+    }
+
+    public void setStartTijd(int startTijd) {
+        this.startTijd = startTijd;
+    }
+
+    public void setDuur(int duur) {
+        this.duur = duur;
+    }
+
+    public void setCompleet(boolean compleet) {
+        this.compleet = compleet;
+    }
+
+    public void setDadelijk(boolean dadelijk) {
+        this.dadelijk = dadelijk;
+    }
 
     public int getBestellingID() {
         return bestellingID;
@@ -61,14 +90,18 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
     public static void main(String[] args) {
 
 
-       Bestellingen bestellingen = new Bestellingen(1,1,false,5,false,true);
-       Bestellingen bestellingen2 = new Bestellingen(2,2,true,7,true,false);
+       Bestellingen bestellingen = new Bestellingen(1,1,false,1,5,false,true);
+       Bestellingen bestellingen2 = new Bestellingen(2,2,false,2,0,false,false);
 
         queue.add(bestellingen);
+        bestellingen.setVerwerking(true);
         queue.add(bestellingen2);
+        System.out.println("Elements in queue" + queue);
         System.out.println("Element to remove: " + queue.element());
         System.out.println("remove: " + queue.remove());
-        System.out.println(queue);
+
+        queue.add(bestellingen2);
+        System.out.println("Elements in queue" + queue);
 
     }
 }
