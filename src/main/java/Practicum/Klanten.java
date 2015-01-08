@@ -12,21 +12,22 @@ public class Klanten extends ArrayQueue<Klanten> {
         int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
         sort(notSortedAge);
 
-        String[] notSortedArray = {"maurer", "levens", "maurits", "verker"};
-        // Search for lastname
+        String[] notSortedArray = {"maurer", "levens", "maurits","verker"};
+        // Search for lastname using linear Search
         System.out.println("Index: " + linearSearch(notSortedArray, "maurits"));
 
         String sortedArray[] = insertionSort(notSortedArray, notSortedArray.length);
         for (String aSortedArray : sortedArray) {
             System.out.println(aSortedArray);
         }
+        // Binary Search
+        System.out.println("Index: " + binarySearch(sortedArray,"maurer"));
+
 
     }
 
-    /*
-
-        Insertion Sort
-
+    /**
+    * Insertion Sort
     */
 
     public static String[] insertionSort(String array[], int arrayLength){
@@ -35,7 +36,7 @@ public class Klanten extends ArrayQueue<Klanten> {
             for(int nextIndex = firstIndex + 1 ; nextIndex < arrayLength ; nextIndex++){
 
                 // compareToIgnoreCase returns a negative integer, zero, or a positive integer as the specified String is greater than, equal to, or less than this String.
-                if ( array[firstIndex].compareToIgnoreCase( array[nextIndex] ) >= 0){
+                if ( array[firstIndex].compareToIgnoreCase( array[nextIndex] ) > 0){
                     tempArray = array[firstIndex];
 
                     array[firstIndex] = array[nextIndex];
@@ -48,10 +49,8 @@ public class Klanten extends ArrayQueue<Klanten> {
         return array;
     }
 
-    /*
-
-        linearSearch
-
+    /**
+    * LinearSearch
     */
 
     public static int linearSearch(String[] Achternamen, String achternaamInvoer ){
@@ -66,10 +65,8 @@ public class Klanten extends ArrayQueue<Klanten> {
         return -1;
     }
 
-    /*
-
-        Merge Sort
-
+    /**
+    * Merge Sort
     */
     public static void sort(int[] invoerArray){
         sort(invoerArray, 0 ,invoerArray.length);
@@ -103,4 +100,26 @@ public class Klanten extends ArrayQueue<Klanten> {
 
     }
 
+    /**
+     * Binary Search
+     */
+
+    public static int binarySearch(String[] words, String value) {
+        return binarySearch(words, value, 0, words.length - 1);
+    }
+
+    private static int binarySearch(String[] words, String value, int start, int end) {
+        if (start > end) { return -1;  }
+
+        int middle = (end + start) / 2;
+
+        if (words[middle].equals(value)) { return middle;
+        } else if(words[middle].compareToIgnoreCase(value) > 0) {
+            return binarySearch(words, value, start, middle - 1);
+        } else {
+            return binarySearch(words, value, middle + 1, end);
+        }
+    }
 }
+
+
