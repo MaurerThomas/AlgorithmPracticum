@@ -9,6 +9,10 @@ import java.util.Arrays;
 public class Klanten extends ArrayQueue<Klanten> {
 
     public static void main(String[] args) {
+
+
+
+
         int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
         sort(notSortedAge);
 

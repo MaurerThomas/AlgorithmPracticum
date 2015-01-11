@@ -29,3 +29,61 @@
         }
 
         System.out.println("Wilt u leeftijden sorteren via merge sort? y/n");
+#######################################################################################################################
+
+
+ public boolean remove(int value) {
+        Node focusNode = root;
+        Node parent = root;
+
+        boolean isItALeftChild = true;
+        while (focusNode.value != value){
+
+            parent = focusNode;
+
+            if (value < focusNode.value){
+
+                isItALeftChild = true;
+
+                focusNode = focusNode.left;
+            } else {
+
+                isItALeftChild = false;
+                focusNode = focusNode.right;
+            }
+
+            if (focusNode == null){
+                return false;
+            }
+        }
+
+        if (focusNode.left == null && focusNode.right == null){
+
+            if(focusNode == root){
+
+                root = null;
+
+            } else if (isItALeftChild){
+
+                parent.left = null;
+
+            } else {
+
+                parent.right = null;
+            }
+
+        }
+
+        else if (focusNode.right == null){
+
+            if (focusNode == root){
+                root = focusNode.left;
+            } else if (isItALeftChild){
+                parent.left = focusNode.left;
+            } else { parent.right = focusNode.left;
+        }
+
+         else if(focusNode.left == null){
+
+            }
+    }
