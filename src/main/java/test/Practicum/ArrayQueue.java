@@ -1,11 +1,13 @@
-package Practicum;
+package test.Practicum;
+
+import Practicum.Queue;
 
 import java.util.NoSuchElementException;
 
 /**
  * Created by Thomas on 9-12-2014.
  */
-public class ArrayQueue<E> implements Queue<E> {
+public class ArrayQueue<T> implements Queue<E> {
 
     private E[] elements;
     private int front;
@@ -35,13 +37,7 @@ public class ArrayQueue<E> implements Queue<E> {
         }
     }
 
-    @Override
-    public E element() {
-        if (size() == 0){
-            throw new NoSuchElementException();
-        }
-        return elements[front];
-    }
+
 
     @Override
     public boolean isEmpty() {

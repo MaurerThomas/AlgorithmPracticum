@@ -1,9 +1,16 @@
 package Practicum;
+
+import java.sql.Date;
+import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
+
 /**
  * Created by Thomas on 1-12-2014.
  */
-public class Bestellingen extends ArrayQueue<Bestellingen>{
-    private static ArrayQueue<Bestellingen> queue = new ArrayQueue<Bestellingen>(10);
+public class Bestellingen<T> implements Queue<T>{
+
+    private int total;
+    private Node first, last;
 
     protected int klantID;
     protected int bestellingID;
@@ -12,6 +19,53 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
     protected int duur;
     protected boolean compleet;
     protected boolean dadelijk;
+
+    @Override
+    public Queue<T> enqueue(T ele) {
+        Node current = last;
+        last = new Node();
+        last.element = ele;
+
+        if (total++ == 0) first = last;
+        else current.next = last;
+
+        return this;
+    }
+
+    @Override
+    public T dequeue() {
+        if (total == 0) throw new java.util.NoSuchElementException();
+        T ele = first.element;
+        first = first.next;
+        if (--total == 0) last = null;
+        return ele;
+    }
+
+    @Override
+    public T update() {
+        Date tijd = new java.sql.Date(new java.util.Date().getTime());
+
+           return null;
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        Node tmp = first;
+
+        while (tmp != null) {
+            sb.append(tmp.element).append(", ");
+            tmp = tmp.next;
+        }
+        return sb.toString();
+    }
+    private class Node{
+
+        T element;
+        Node next;
+    }
+
 
 
 
@@ -26,11 +80,7 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
 
     }
 
-    public String toString() {
-        return "KlantID:" + this.klantID + ","
-                + "BestellingID:" + this.bestellingID + "," + "Verwerking:"
-                + this.verwerking + "," + "Tijd:" + this.duur + "," + "Compleet:" + this.compleet + "," + "Wacht op bestelling:" + this.dadelijk;
-    }
+
 
     // Getters and setters
     public int getKlantID() {return klantID;}
@@ -88,20 +138,23 @@ public class Bestellingen extends ArrayQueue<Bestellingen>{
     }
 
     public static void main(String[] args) {
+       Queue<Bestellingen> queue = new Bestellingen<Bestellingen>(1,1,false,1,5,false,true);
 
 
-       Bestellingen bestellingen = new Bestellingen(1,1,false,1,5,false,true);
-       Bestellingen bestellingen2 = new Bestellingen(2,2,false,2,0,false,false);
 
-        queue.add(bestellingen);
-        bestellingen.setVerwerking(true);
-        queue.add(bestellingen2);
-        System.out.println("Elements in queue" + queue);
-        System.out.println("Element to remove: " + queue.element());
-        System.out.println("remove: " + queue.remove());
+        queue.enqueue(new Bestellingen(1,1,false,1,5,false,true));
+        queue.enqueue(new Bestellingen(2,2,true,2,6,false,true));
 
-        queue.add(bestellingen2);
-        System.out.println("Elements in queue" + queue);
+       System.out.println("Elements in queue: " + queue);
+
+
+
 
     }
+
+
+
+
+
+
 }
