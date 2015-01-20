@@ -2,15 +2,27 @@ package Practicum;
 
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by Thomas on 28-11-2014.
  */
-public class Klanten implements BinaryTree {
+public class Klanten implements BinaryTree, Comparator<Klanten.Node>{
 
     public Node root;
 
-    public class Node<E> {
+
+    @Override
+    public int compare(Node x, Node y) {
+        if ( x.value > y.value){
+            return 1;
+
+        } else {
+            return 0;
+        }
+    }
+
+    public class Node {
         public int value;
         public Node left;
         public Node right;
@@ -38,10 +50,16 @@ public class Klanten implements BinaryTree {
         System.out.println("Index: " + binarySearch(sortedArray,"maurer"));
 
         Klanten bst = new Klanten();
-
-
-
+        bst.insert(1);
+        bst.insert(3);
+        bst.insert(5);
+        bst.insert(7);
+        bst.insert(9);
         System.out.println("Inorder traversal");
+        bst.printInorder();
+        System.out.println("Removing customers 1 and 3");
+        bst.remove(1);
+        bst.remove(3);
         bst.printInorder();
 
 
@@ -144,18 +162,24 @@ public class Klanten implements BinaryTree {
 
     @Override
     public void remove(int value) {
+
         root = remove(root, value);
     }
 
 
     private Node remove(Node latestRoot, int value){
+        Node node = new Node(value);
+
+
+        int compareValue = compare(latestRoot,node);
+
 
         if (latestRoot == null){
             // empty tree or value not found; nothing to do
-        }else if (latestRoot.value < value){
+        }else if (compareValue > 1){
             // value is in my right subtree, if it is in the tree at all; go right
             latestRoot.right = remove(latestRoot.right,value);
-        } else if (latestRoot.value > value){
+        } else if (compareValue < 0){
             // value is in my left subtree, if it is in the tree at all; go left
             latestRoot.left = remove(latestRoot.left,value);
         } else {
@@ -191,7 +215,7 @@ public class Klanten implements BinaryTree {
 
     @Override
     public void insert(int value){
-        Node node = new Node<>(value);
+        Node node = new Node(value);
         if ( root == null ) {
             root = node;
             return;
@@ -202,7 +226,9 @@ public class Klanten implements BinaryTree {
 
     private void insertRec(Node latestRoot, Node nextNode){
 
-        if ( latestRoot.value > nextNode.value){
+       int value = compare(latestRoot, nextNode);
+
+        if ( value >= 1){
 
             if ( latestRoot.left == null ){
                 latestRoot.left = nextNode;
