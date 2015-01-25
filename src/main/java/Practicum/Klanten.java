@@ -13,11 +13,11 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
 
     public Klanten() {
 
-<<<<<<< HEAD
+
     }
 
-=======
->>>>>>> origin/Alpha
+
+
     @Override
     public int compare(Node x, Node y) {
         if (x.value > y.value) {
@@ -43,15 +43,14 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
+
         Klanten[] klanten = new Klanten[4];
         klanten[0] = new Klanten(13,"maurer");
         klanten[1] = new Klanten(2,"levens");
         klanten[2] = new Klanten(15,"maurits");
         klanten[3] = new Klanten(5,"verker");
 
-=======
->>>>>>> origin/Alpha
+
         int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
         sort(notSortedAge);
 
