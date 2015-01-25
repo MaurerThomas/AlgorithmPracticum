@@ -8,10 +8,8 @@ import java.util.NoSuchElementException;
  * Created by Thomas on 1-12-2014.
  */
 public class Bestellingen<T> implements Queue<T>{
-
     private int total;
     private Node first, last;
-
     protected int klantID;
     protected int bestellingID;
     protected boolean verwerking;
@@ -61,13 +59,9 @@ public class Bestellingen<T> implements Queue<T>{
         return sb.toString();
     }
     private class Node{
-
         T element;
         Node next;
     }
-
-
-
 
     public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
@@ -79,8 +73,6 @@ public class Bestellingen<T> implements Queue<T>{
         this.dadelijk = dadelijk;
 
     }
-
-
 
     // Getters and setters
     public int getKlantID() {return klantID;}
@@ -139,22 +131,9 @@ public class Bestellingen<T> implements Queue<T>{
 
     public static void main(String[] args) {
        Queue<Bestellingen> queue = new Bestellingen<Bestellingen>(1,1,false,1,5,false,true);
-
-
-
         queue.enqueue(new Bestellingen(1,1,false,1,5,false,true));
         queue.enqueue(new Bestellingen(2,2,true,2,6,false,true));
-
-       System.out.println("Elements in queue: " + queue);
-
-
-
-
+        System.out.println("Elements in queue: " + queue);
     }
-
-
-
-
-
 
 }
