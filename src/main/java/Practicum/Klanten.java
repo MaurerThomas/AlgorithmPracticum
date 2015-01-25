@@ -3,14 +3,19 @@ package Practicum;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
+import java.util.Scanner;
 /**
  * Created by Thomas on 28-11-2014.
  */
 public class Klanten implements BinaryTree, Comparator<Klanten.Node>{
 
     public Node root;
+    protected int leeftijd;
+    protected String achternaam;
 
+    public Klanten() {
+
+    }
 
     @Override
     public int compare(Node x, Node y) {
@@ -20,6 +25,12 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node>{
         } else {
             return 0;
         }
+    }
+
+    public Klanten(int leeftijd,String achternaam){
+        this.leeftijd = leeftijd;
+        this.achternaam = achternaam;
+
     }
 
     public class Node {
@@ -34,6 +45,11 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node>{
     }
 
     public static void main(String[] args) {
+        Klanten[] klanten = new Klanten[4];
+        klanten[0] = new Klanten(13,"maurer");
+        klanten[1] = new Klanten(2,"levens");
+        klanten[2] = new Klanten(15,"maurits");
+        klanten[3] = new Klanten(5,"verker");
 
         int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
         sort(notSortedAge);
