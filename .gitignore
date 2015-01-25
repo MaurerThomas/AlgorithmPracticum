@@ -5,3 +5,9 @@ AlgorithmPracticum.iml
 .idea/modules.xml
 .idea/misc.xml
 .idea/.name
+.idea/misc.xml
+.idea/misc.xml
+.idea/workspace.xml
+target/MANIFEST.MF
+*.xml
+*.class
