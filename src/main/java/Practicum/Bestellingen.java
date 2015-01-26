@@ -57,7 +57,6 @@ public class Bestellingen<T> implements Queue<T>{
         this.duur = duur;
         this.compleet = compleet;
         this.dadelijk = dadelijk;
-
     }
 
     public static void main(String[] args) {
@@ -69,18 +68,12 @@ public class Bestellingen<T> implements Queue<T>{
         Bestellingen bestellingen2 = new Bestellingen(2,2,false,tijd,tijd,false,true);
 
         queue.enqueue(bestellingen1).enqueue(bestellingen2);
-
         System.out.println("Elements in queue: " + queue);
-        //queue.dequeue();
-        //System.out.println("Elements in queue: " + queue);
-
     }
 
     private class Node{
         T element;
         Node next;
-
-
     }
 
     @Override
@@ -113,7 +106,6 @@ public class Bestellingen<T> implements Queue<T>{
             if (tijdNu.compareTo(startTijd) > 0){
                 setCompleet(true);
             }
-
            return null;
     }
 
@@ -123,7 +115,6 @@ public class Bestellingen<T> implements Queue<T>{
         StringBuilder sb = new StringBuilder();
         Node tmp = first;
 
-
         while (tmp != null) {
             sb.append(tmp.element).append(", ");
             tmp = tmp.next;
@@ -131,5 +122,4 @@ public class Bestellingen<T> implements Queue<T>{
         }
         return sb.toString();
     }
-
 }

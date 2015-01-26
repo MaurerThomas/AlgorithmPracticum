@@ -1,9 +1,7 @@
 package Practicum;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Scanner;
 /**
  * Created by Thomas on 28-11-2014.
  */
@@ -13,8 +11,6 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
     protected String achternaam;
 
     public Klanten() {
-
-
     }
 
     @Override
@@ -29,7 +25,6 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
     public Klanten(int leeftijd,String achternaam){
         this.leeftijd = leeftijd;
         this.achternaam = achternaam;
-
     }
 
     public class Node {
@@ -42,13 +37,11 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
     }
 
     public static void main(String[] args) {
-
         Klanten[] klanten = new Klanten[4];
         klanten[0] = new Klanten(13,"maurer");
         klanten[1] = new Klanten(2,"levens");
         klanten[2] = new Klanten(15,"maurits");
         klanten[3] = new Klanten(5,"verker");
-
 
         int[] notSortedAge = {3, 2, 4, 5, 6, 1, 9, 10};
         sort(notSortedAge);
@@ -68,9 +61,6 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
         // Binary Search
         System.out.println("Binary Search on lastname w/ sorted array");
         System.out.println("Found on index: " + binarySearch(sortedArray, "maurer"));
-        // Binary Search Advanced
-        System.out.println("Binary Search Advanced on lastname w/ sorted array");
-        System.out.println("Found on index: " + binarySearchAdv(sortedArray, "maurer"));
 
         Klanten bst = new Klanten();
         bst.insert(1);
@@ -86,6 +76,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
         bst.printInorder();
         System.out.println("Sort with binary insertionsort");
         BinaryInsertionSort(notSortedArray);
+        bst.printSearch();
     }
 
     /**
@@ -196,25 +187,6 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
 
     }
 
-    public static int binarySearchAdv(String[] words, String value) {
-        return binarySearchAdv(words, value, 0, words.length - 1);
-    }
-
-    private static int binarySearchAdv(String[] words, String value, int start, int end) {
-        if (start > end) {
-            return -1;
-        }
-        //prevent int overflow
-        int middle = ((end + start) / 2);
-        if (words[middle].equals(value)) {
-            return middle;
-        } else if (words[middle].compareToIgnoreCase(value) > 0) {
-            return binarySearchAdv(words, value, start, middle - 1);
-        } else {
-            return binarySearchAdv(words, value, middle + 1, end);
-        }
-    }
-
     @Override
     public void remove(int value) {
         root = remove(root, value);
@@ -311,8 +283,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
 
     @Override
     public void printSearch() {
-        search(root, 5);
-        System.out.println("");
+        System.out.println(search(root, 12));
     }
 
     @Override
