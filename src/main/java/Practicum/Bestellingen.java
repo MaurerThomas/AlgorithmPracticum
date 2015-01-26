@@ -43,7 +43,9 @@ public class Bestellingen<T> implements Queue<T>{
     }
 
     public Bestellingen(){
-
+        first = null;
+        last = null;
+        total = 0;
     }
 
 
@@ -59,12 +61,24 @@ public class Bestellingen<T> implements Queue<T>{
     }
 
     public static void main(String[] args) {
-        Queue<Bestellingen> queue = new Bestellingen<Bestellingen>();
+        Queue<Bestellingen> queue = new Bestellingen<>();
+
         Bestellingen bestellingen1 = new Bestellingen(1,1,false,1,5,false,true);
-        queue.enqueue(bestellingen1);
+        Bestellingen bestellingen2 = new Bestellingen(2,2,false,1,5,false,true);
+
+
+        queue.enqueue(bestellingen1).enqueue(bestellingen2);
+
         System.out.println("Elements in queue: " + queue);
-        queue.dequeue();
-        System.out.println("Elements in queue: " + queue);
+       // queue.dequeue();
+       // System.out.println("Elements in queue: " + queue);
+    }
+
+    private class Node{
+        T element;
+        Node next;
+
+
     }
 
     @Override
@@ -75,7 +89,6 @@ public class Bestellingen<T> implements Queue<T>{
 
         if (total++ == 0) first = last;
         else current.next = last;
-
         return this;
     }
 
@@ -83,6 +96,7 @@ public class Bestellingen<T> implements Queue<T>{
     public T dequeue() {
         if (total == 0) throw new java.util.NoSuchElementException();
         T ele = first.element;
+
         first = first.next;
         if (--total == 0) last = null;
         return ele;
@@ -104,15 +118,9 @@ public class Bestellingen<T> implements Queue<T>{
         while (tmp != null) {
             sb.append(tmp.element).append(", ");
             tmp = tmp.next;
+
         }
         return sb.toString();
     }
-    private class Node{
-        T element;
-        Node next;
-    }
-
-
-
 
 }
