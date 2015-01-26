@@ -79,7 +79,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
         bst.remove(3);
         bst.printInorder();
         System.out.println("Sort with binary insertionsort");
-        BinaryInsertionSort(notSortedArray, 1);
+        BinaryInsertionSort(notSortedArray);
     }
 
     /**
@@ -153,18 +153,19 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
     /**
      * Binary Search
      */
-    public static void BinaryInsertionSort (String[] words, int n)
+    public static void BinaryInsertionSort (String[] words)
     {
         int ins, i, j;
         String tmp;
 
-        for (i = 1; i < n; i++) {
+        for (i = 1; i < words.length; i++) {
             ins = binarySearch(words, words[i], 0, i);
-            if (ins < i) {
+            if (ins <= i) {
                 tmp = words[i];
                 for (j = i - 1; j >= ins; j--)
                     words[j + 1] = words[j];
                 words[ins] = tmp;
+                System.out.println(tmp);
             }
         }
     }
@@ -177,7 +178,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
             return -1;
         }
             //prevent int overflow
-        int middle = start + ((end + start) / 2);
+        int middle = ((end + start) / 2);
 
         if (words[middle].equals(value)) {
             return middle;
