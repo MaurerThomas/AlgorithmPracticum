@@ -16,8 +16,6 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
 
     }
 
-
-
     @Override
     public int compare(Node x, Node y) {
         if (x.value > y.value) {
@@ -158,7 +156,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
         int ins, i, j;
         String tmp;
 
-        for (i = 1; i < words.length; i++) {
+        for (i = 0; i < words.length; i++) {
             ins = binarySearch(words, words[i], 0, i);
             if (ins <= i) {
                 tmp = words[i];
