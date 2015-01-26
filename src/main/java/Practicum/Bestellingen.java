@@ -41,7 +41,11 @@ public class Bestellingen<T> implements Queue<T>{
     public void setDadelijk(boolean dadelijk) {
         this.dadelijk = dadelijk;
     }
-      
+
+    public Bestellingen(){
+
+    }
+
 
     public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
@@ -55,9 +59,11 @@ public class Bestellingen<T> implements Queue<T>{
     }
 
     public static void main(String[] args) {
-        Queue<Bestellingen> queue = new Bestellingen<Bestellingen>(1,1,false,1,5,false,true);
-        queue.enqueue(new Bestellingen(1,1,false,1,5,false,true));
-        queue.enqueue(new Bestellingen(2,2,true,2,6,false,true));
+        Queue<Bestellingen> queue = new Bestellingen<Bestellingen>();
+        Bestellingen bestellingen1 = new Bestellingen(1,1,false,1,5,false,true);
+        queue.enqueue(bestellingen1);
+        System.out.println("Elements in queue: " + queue);
+        queue.dequeue();
         System.out.println("Elements in queue: " + queue);
     }
 
