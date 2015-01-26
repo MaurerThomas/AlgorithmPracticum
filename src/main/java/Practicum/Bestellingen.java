@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
  * Created by Thomas on 1-12-2014.
  */
 public class Bestellingen<T> implements Queue<T>{
+
     private int total;
     private Node first, last;
     protected int klantID;
@@ -17,6 +18,48 @@ public class Bestellingen<T> implements Queue<T>{
     protected int duur;
     protected boolean compleet;
     protected boolean dadelijk;
+
+    // setters
+    public void setKlantID(int klantID) {
+        this.klantID = klantID;
+    }
+    public void setBestellingID(int bestellingID) {
+        this.bestellingID = bestellingID;
+    }
+    public void setVerwerking(boolean verwerking) {
+        this.verwerking = verwerking;
+    }
+    public void setStartTijd(int startTijd) {
+        this.startTijd = startTijd;
+    }
+    public void setDuur(int duur) {
+        this.duur = duur;
+    }
+    public void setCompleet(boolean compleet) {
+        this.compleet = compleet;
+    }
+    public void setDadelijk(boolean dadelijk) {
+        this.dadelijk = dadelijk;
+    }
+      
+
+    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
+        this.klantID = klantID;
+        this.bestellingID = bestellingID;
+        this.verwerking = verwerking;
+        this.startTijd = startTijd;
+        this.duur = duur;
+        this.compleet = compleet;
+        this.dadelijk = dadelijk;
+
+    }
+
+    public static void main(String[] args) {
+        Queue<Bestellingen> queue = new Bestellingen<Bestellingen>(1,1,false,1,5,false,true);
+        queue.enqueue(new Bestellingen(1,1,false,1,5,false,true));
+        queue.enqueue(new Bestellingen(2,2,true,2,6,false,true));
+        System.out.println("Elements in queue: " + queue);
+    }
 
     @Override
     public Queue<T> enqueue(T ele) {
@@ -63,77 +106,7 @@ public class Bestellingen<T> implements Queue<T>{
         Node next;
     }
 
-    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
-        this.klantID = klantID;
-        this.bestellingID = bestellingID;
-        this.verwerking = verwerking;
-        this.startTijd = startTijd;
-        this.duur = duur;
-        this.compleet = compleet;
-        this.dadelijk = dadelijk;
 
-    }
 
-    // Getters and setters
-    public int getKlantID() {return klantID;}
-
-    public void setKlantID(int klantID) {
-        this.klantID = klantID;
-    }
-
-    public void setBestellingID(int bestellingID) {
-        this.bestellingID = bestellingID;
-    }
-
-    public void setVerwerking(boolean verwerking) {
-        this.verwerking = verwerking;
-    }
-
-    public void setStartTijd(int startTijd) {
-        this.startTijd = startTijd;
-    }
-
-    public void setDuur(int duur) {
-        this.duur = duur;
-    }
-
-    public void setCompleet(boolean compleet) {
-        this.compleet = compleet;
-    }
-
-    public void setDadelijk(boolean dadelijk) {
-        this.dadelijk = dadelijk;
-    }
-
-    public int getBestellingID() {
-        return bestellingID;
-    }
-
-    public boolean isVerwerking() {
-        return verwerking;
-    }
-
-    public int getStartTijd() {
-        return startTijd;
-    }
-
-    public int getDuur() {
-        return duur;
-    }
-
-    public boolean isCompleet() {
-        return compleet;
-    }
-
-    public boolean isDadelijk() {
-        return dadelijk;
-    }
-
-    public static void main(String[] args) {
-       Queue<Bestellingen> queue = new Bestellingen<Bestellingen>(1,1,false,1,5,false,true);
-        queue.enqueue(new Bestellingen(1,1,false,1,5,false,true));
-        queue.enqueue(new Bestellingen(2,2,true,2,6,false,true));
-        System.out.println("Elements in queue: " + queue);
-    }
 
 }
