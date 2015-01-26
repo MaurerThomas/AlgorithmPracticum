@@ -54,15 +54,19 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
 
         String[] notSortedArray = {"maurer", "levens", "maurits", "verker"};
         // Search for lastname using linear Search
-        System.out.println("Index: " + linearSearch(notSortedArray, "maurits"));
+        System.out.println("Search for lastname using Linear Search");
+        System.out.println("Found on index: " + linearSearch(notSortedArray, "maurits"));
 
         String sortedArray[] = insertionSort(notSortedArray, notSortedArray.length);
+        System.out.println("Sorted array with InsertionSort");
         for (String aSortedArray : sortedArray) {
+
             System.out.println(aSortedArray);
         }
 
         // Binary Search
-        System.out.println("Index: " + binarySearch(sortedArray, "maurer"));
+        System.out.println("Binary Search on lastname w/ sorted array");
+        System.out.println("Found on index: " + binarySearch(sortedArray, "maurer"));
 
         Klanten bst = new Klanten();
         bst.insert(1);
@@ -120,6 +124,7 @@ public class Klanten implements BinaryTree, Comparator<Klanten.Node> {
      */
     public static void sort(int[] invoerArray) {
         sort(invoerArray, 0, invoerArray.length);
+        System.out.println("Mergesort an array");
         System.out.println(Arrays.toString(invoerArray));
     }
 
