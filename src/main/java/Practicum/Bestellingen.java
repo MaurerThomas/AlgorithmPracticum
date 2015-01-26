@@ -1,8 +1,8 @@
 package Practicum;
 
-import java.sql.Date;
-import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
+
+import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by Thomas on 1-12-2014.
@@ -14,8 +14,8 @@ public class Bestellingen<T> implements Queue<T>{
     protected int klantID;
     protected int bestellingID;
     protected boolean verwerking;
-    protected int startTijd;
-    protected int duur;
+    protected Date startTijd;
+    protected Date duur;
     protected boolean compleet;
     protected boolean dadelijk;
 
@@ -29,10 +29,10 @@ public class Bestellingen<T> implements Queue<T>{
     public void setVerwerking(boolean verwerking) {
         this.verwerking = verwerking;
     }
-    public void setStartTijd(int startTijd) {
+    public void setStartTijd(Date startTijd) {
         this.startTijd = startTijd;
     }
-    public void setDuur(int duur) {
+    public void setDuur(Date duur) {
         this.duur = duur;
     }
     public void setCompleet(boolean compleet) {
@@ -49,7 +49,7 @@ public class Bestellingen<T> implements Queue<T>{
     }
 
 
-    public Bestellingen(int klantID, int bestellingID, boolean verwerking, int startTijd,int duur, boolean compleet, boolean dadelijk){
+    public Bestellingen(int klantID, int bestellingID, boolean verwerking, Date startTijd,Date duur, boolean compleet, boolean dadelijk){
         this.klantID = klantID;
         this.bestellingID = bestellingID;
         this.verwerking = verwerking;
@@ -61,17 +61,19 @@ public class Bestellingen<T> implements Queue<T>{
     }
 
     public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        Date tijd = cal.getTime();
         Queue<Bestellingen> queue = new Bestellingen<>();
 
-        Bestellingen bestellingen1 = new Bestellingen(1,1,false,1,5,false,true);
-        Bestellingen bestellingen2 = new Bestellingen(2,2,false,1,5,false,true);
-
+        Bestellingen bestellingen1 = new Bestellingen(1,1,false,tijd,tijd,false,true);
+        Bestellingen bestellingen2 = new Bestellingen(2,2,false,tijd,tijd,false,true);
 
         queue.enqueue(bestellingen1).enqueue(bestellingen2);
 
         System.out.println("Elements in queue: " + queue);
-       // queue.dequeue();
-       // System.out.println("Elements in queue: " + queue);
+        //queue.dequeue();
+        //System.out.println("Elements in queue: " + queue);
+
     }
 
     private class Node{
@@ -89,6 +91,7 @@ public class Bestellingen<T> implements Queue<T>{
 
         if (total++ == 0) first = last;
         else current.next = last;
+
         return this;
     }
 
@@ -104,7 +107,12 @@ public class Bestellingen<T> implements Queue<T>{
 
     @Override
     public T update() {
-        Date tijd = new java.sql.Date(new java.util.Date().getTime());
+        Calendar cal = Calendar.getInstance();
+        Date tijdNu = cal.getTime();
+
+            if (tijdNu.compareTo(startTijd) > 0){
+                setCompleet(true);
+            }
 
            return null;
     }
@@ -114,6 +122,7 @@ public class Bestellingen<T> implements Queue<T>{
     {
         StringBuilder sb = new StringBuilder();
         Node tmp = first;
+
 
         while (tmp != null) {
             sb.append(tmp.element).append(", ");
